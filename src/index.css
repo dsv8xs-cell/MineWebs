@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: #050505;
+  color: #fafafa;
+  overflow-x: hidden;
+}
+
+/* Custom fade properties for the hero background */
+.hero-gradient {
+  background: linear-gradient(to bottom, transparent 0%, transparent 60%, #050505 100%);
+}

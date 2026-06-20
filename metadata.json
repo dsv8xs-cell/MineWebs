@@ -1,0 +1,6 @@
+{
+  "name": "Minecraft Server Site",
+  "description": "A modern and beautiful landing page for a Minecraft server, featuring live status, updates, and game guides.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
