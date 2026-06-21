@@ -29,7 +29,7 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    title: "Глобальное обновление инфраструктуры",
+    title: "Глобальное обновление",
     date: "20 Июня 2026",
     summary: "Переход на Purpur, полная переработка плагинов геймплея, оптимизации и новые механики взаимодействия.",
     tag: "Глобальное 🚀",
@@ -72,38 +72,6 @@ export function News() {
               </p>
             </div>
 
-            {/* Quick Rules Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
-                <div className="text-xs text-zinc-500 font-mono uppercase">Сохранение инвентаря</div>
-                <div className="text-sm font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>Активно во всех 3 мирах одновременно!</span>
-                </div>
-              </div>
-              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
-                <div className="text-xs text-zinc-500 font-mono uppercase">Режим авторизации (AuthMe)</div>
-                <div className="text-sm font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>Сессия 60 минут без повторного ввода пароля!</span>
-                </div>
-              </div>
-              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
-                <div className="text-xs text-zinc-500 font-mono uppercase">Активность монстров</div>
-                <div className="text-sm font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  <span>Криперы и другие мобы полностью активны</span>
-                </div>
-              </div>
-              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
-                <div className="text-xs text-zinc-500 font-mono uppercase">AFK Тайм-аут кулдаун</div>
-                <div className="text-sm font-semibold text-amber-400/80 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                  <span>Увеличен до 30 минут (настраивается)</span>
-                </div>
-              </div>
-            </div>
-
             {/* Gameplay Section */}
             <div className="space-y-4">
               <h4 className="text-white font-display font-bold text-lg flex items-center gap-2 border-b border-white/10 pb-2">
@@ -114,9 +82,41 @@ export function News() {
                 <div className="space-y-1">
                   <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Сохранение инвентаря</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Сохранение инвентаря теперь работает во всех 3 мирах одновременно.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Режим сессий AuthMe</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Сессия запоминается на 60 минут. При повторном входе в игру пароль вводить не нужно.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Активность мобов</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Криперы и другие классические мобы полностью активны во всех мирах.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Тайм-аут AFK</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Время автоматического кика при бездействии на сервере увеличено до 30 минут.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>Система достижений</span>
                   </div>
-                  <p className="text-xs text-zinc-400">Ваш прогресс теперь более заметен и интересен благодаря плагину <strong>AdvancedAchievements</strong>.</p>
+                  <p className="text-xs text-zinc-400">Ваш прогресс теперь более заметен и награждается благодаря плагину <strong>AdvancedAchievements</strong>.</p>
                 </div>
 
                 <div className="space-y-1">

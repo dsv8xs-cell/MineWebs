@@ -88,7 +88,7 @@ export function Hero() {
               className="flex items-center space-x-3 text-sm text-zinc-400 font-sans"
             >
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
-              <span>Версия сервера: <strong className="text-zinc-200">1.21.1</strong> (вход через <strong className="text-emerald-400">ViaVersion</strong>)</span>
+              <span>Версия сервера: <strong className="text-zinc-200">1.21.1</strong> (поддерживается <strong className="text-emerald-400">ViaVersion</strong>)</span>
             </motion.div>
           </div>
 

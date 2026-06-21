@@ -5,8 +5,8 @@ export function About() {
   const features = [
     {
       icon: <Server className="w-8 h-8 text-emerald-500" />,
-      title: "Стабильность",
-      description: "Стабильный TPS и мощное серверное железо. Быстрый отклик и комфортная игра без задержек."
+      title: "Чистая оптимизация",
+      description: "Никакого лишнего мусора и тяжелых плагинов. Сервер настроен вручную для максимально плавного и комфортного выживания."
     },
     {
       icon: <Users className="w-8 h-8 text-cyan-500" />,
