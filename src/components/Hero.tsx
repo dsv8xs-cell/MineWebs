@@ -9,10 +9,9 @@ export function Hero() {
   const [activeTab, setActiveTab] = useState<Tab>("java");
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
-  const javaIp = "engine-briefing.gl.joinmc.link";
-  const bedrockIp = "france-sbjct.gl.at.ply.gg";
-  const bedrockPort = "2658";
-  const bedrockBackupIp = "147.185.221.19";
+  const javaIp = "node1.cloudpilot.pl:25589";
+  const bedrockIp = "node1.cloudpilot.pl";
+  const bedrockPort = "25589";
 
   const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
@@ -166,7 +165,7 @@ export function Hero() {
 
                     <div className="text-xs text-zinc-400 leading-relaxed font-sans bg-emerald-500/5 p-3.5 rounded-xl border border-emerald-500/10 flex items-start gap-2.5">
                       <span className="text-emerald-400 mt-0.5">•</span>
-                      <span>Подходит для оригинальных клиентов и лаунчеров на компьютере. Порт вводить не нужно (стандартный).</span>
+                      <span>Подходит для оригинальных клиентов и лаунчеров на компьютере..</span>
                     </div>
                   </motion.div>
                 ) : (
@@ -181,7 +180,7 @@ export function Hero() {
                     {/* Primary Bedrock */}
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
                       <div className="md:col-span-3 space-y-1.5">
-                        <div className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider">Основной IP (Bedrock)</div>
+                        <div className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider">Адрес сервера (Bedrock)</div>
                         <div className="flex items-center justify-between bg-black/60 px-3.5 py-3 rounded-xl border border-white/5">
                           <span className="font-mono text-cyan-400 text-xs select-all truncate">
                             {bedrockIp}
@@ -219,32 +218,9 @@ export function Hero() {
                       </div>
                     </div>
 
-                    {/* Backup Bedrock */}
-                    <div className="space-y-1.5 gap-2.5">
-                      <div className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider flex items-center justify-between">
-                        <span>Запасной IP (если не работает основной)</span>
-                        <span className="text-rose-400 text-[9px] lowercase">backup</span>
-                      </div>
-                      <div className="flex items-center justify-between bg-black/60 px-3.5 py-3 rounded-xl border border-white/5">
-                        <span className="font-mono text-amber-400 text-xs select-all">
-                          {bedrockBackupIp} (Порт: {bedrockPort})
-                        </span>
-                        <button
-                          onClick={() => handleCopy(bedrockBackupIp, "bedrock-backup-ip")}
-                          className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 p-1.5 rounded-md transition-colors border border-amber-500/20 ml-2"
-                        >
-                          {copiedText === "bedrock-backup-ip" ? (
-                            <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                          ) : (
-                            <Copy className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-
                     <div className="text-[11px] text-zinc-400 leading-relaxed font-sans bg-cyan-500/5 px-3 py-2 rounded-xl border border-cyan-500/10 flex items-start gap-2">
                       <span className="text-cyan-400 font-bold">•</span>
-                      <span>Для телефонов, планшетов, Minecraft Pocket Edition и консолей. Обязательно укажите порт <b>{bedrockPort}</b>!</span>
+                      <span>Для телефонов, планшетов, Minecraft Pocket Edition и консолей. Обязательно укажите этот порт!</span>
                     </div>
 
                     <div className="bg-emerald-500/5 border border-emerald-500/15 p-3.5 rounded-xl space-y-1.5">

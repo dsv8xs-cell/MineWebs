@@ -98,9 +98,9 @@ export function News() {
                 <div className="space-y-1">
                   <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Активность мобов</span>
+                    <span>Баланс спавна мобов</span>
                   </div>
-                  <p className="text-xs text-zinc-400">Криперы и другие классические мобы полностью активны во всех мирах.</p>
+                  <p className="text-xs text-zinc-400">Полностью возвращено дефолтное, стандартное количество мобов для каноничного баланса выживания в мире майнкрафта.</p>
                 </div>
 
                 <div className="space-y-1">
@@ -165,13 +165,16 @@ export function News() {
             <div className="space-y-4">
               <h4 className="text-white font-display font-bold text-lg flex items-center gap-2 border-b border-white/10 pb-2">
                 <Cpu className="w-5 h-5 text-cyan-400" />
-                <span>Технические улучшения и ядра</span>
+                <span>Технические улучшения и инфраструктура</span>
               </h4>
               <ul className="space-y-2 text-sm text-zinc-400 list-disc list-inside">
-                <li>Обновление до стабильного и быстрого ядра <strong className="text-zinc-200">Purpur 1.21.1</strong>.</li>
-                <li>Предгенерация игрового мира с помощью <strong className="text-zinc-200">Chunky</strong> — бег и полеты теперь не вызывают серверных фризов.</li>
-                <li>Оптимизатор жителей <strong className="text-zinc-200">VillagerOptimizer</strong> — снижает лаги от сложных ИИ ферм жителей.</li>
-                <li>Полностью обновлен Античит — сведены к минимуму ложные кики за обычные полеты и лаги соединения.</li>
+                <li>Обновление до стабильного и самого производительного ядра <strong className="text-zinc-200">Purpur 1.21.1</strong>.</li>
+                <li><strong>Переезд на новый мощный хостинг</strong> — повышенная стабильность, отличный пинг и защищенность.</li>
+                <li><strong>Увеличение дальности прорисовки до 15 чанков</strong> — исследуйте мир с потрясающими видами без потери производительности!</li>
+                <li><strong>Зачистка лишних плагинов</strong> — удалили все ненужные и устаревшие расширения для максимального облегчения сервера.</li>
+                <li>Предгенерация игрового мира с помощью <strong className="text-zinc-200">Chunky</strong> — бег и быстрые полеты больше не вызывают серверных фризов.</li>
+                <li>Оптимизатор жителей <strong className="text-zinc-200">VillagerOptimizer</strong> — снижает лаги от массивных ферм жителей.</li>
+                <li>Полностью обновлен Античит — устранены ложные срабатывания при полетах и лагах соединения.</li>
               </ul>
             </div>
 
