@@ -1,37 +1,258 @@
 import { motion, AnimatePresence } from "motion/react";
 import newsImg from "../assets/images/minecraft_news_bg_1781562177225.jpg";
-import { Calendar, ChevronRight, X, Clock, Newspaper } from "lucide-react";
+import { 
+  Calendar, 
+  ChevronRight, 
+  X, 
+  Clock, 
+  Sparkles, 
+  Cpu, 
+  ShieldCheck, 
+  Zap, 
+  Target, 
+  Info, 
+  CheckCircle2, 
+  AlertCircle 
+} from "lucide-react";
 import { useState } from "react";
 
-const newsItems = [
+// Detailed interface to support rich modular content
+interface NewsItem {
+  id: number;
+  title: string;
+  date: string;
+  summary: string;
+  tag: string;
+  type: "global_patch" | "fishing" | "optimization";
+}
+
+const newsItems: NewsItem[] = [
   {
     id: 1,
-    title: "Полный вайп и обновление мира",
-    date: "15 Июня 2026",
-    summary: "Мы провели полный вайп основного мира и обновили генерацию локаций. Заходи и занимай лучшие территории!",
-    tag: "Глобальное",
-    content: "Мы полностью перезапустили основной мир сервера Aetheria! Это отличный шанс для всех игроков начать с чистого листа, застолбить лучшие приватные территории и построить свои грандиозные постройки.\n\nОсновные изменения:\n• Мир Энда и Незера полностью пересоздан.\n• Добавлены новые еженедельные испытания и достижения.\n• Обновлена система генерации пещер и подземелий для версии 1.21+.\n• Улучшен спавн реликвий и редких сокровищ в заброшенных шахтах."
+    title: "Глобальное обновление инфраструктуры",
+    date: "20 Июня 2026",
+    summary: "Переход на Purpur, полная переработка плагинов геймплея, оптимизации и новые механики взаимодействия.",
+    tag: "Глобальное 🚀",
+    type: "global_patch"
   },
   {
     id: 2,
-    title: "Новые косметические предметы",
-    date: "01 Июня 2026",
-    summary: "Добавлены уникальные визуальные эффекты, титулы и аксессуары. Сделайте своего персонажа уникальным!",
-    tag: "Косметика",
-    content: "Мы рады представить крупное обновление системы косметики и кастомизации персонажа!\n\nЧто нового:\n• Множество уникальных косметических эффектов, доступных за активность на сервере.\n• Уникальные анимации ломания блоков и кастомные следы при ходьбе.\n• Новые кастомные шляпы: Цилиндр, Маска Дракона и Шлем Космонавта!\n• Возможность настроить индивидуальный вид вашего персонажа без сторонних модов.\n\nВся косметика доступна абсолютно всем игрокам бесплатно по команде /cosmetics!"
+    title: "Обновление рыбалки: EvenMoreFish!",
+    date: "15 Июня 2026",
+    summary: "Установлена новая система рыболовства с десятками видов рыб, турнирами и обменом редких уловов.",
+    tag: "Геймплей 🎣",
+    type: "fishing"
   },
   {
     id: 3,
     title: "Технические работы завершены",
-    date: "28 Мая 2026",
-    summary: "Сервер снова онлайн. Мы улучшили оптимизацию базы данных и исправили лаги в энде.",
-    tag: "Техническое",
-    content: "Мы провели глобальную оптимизацию серверной части, чтобы снизить пиковые задержки и исключить просадки TPS.\n\nПроделанные работы:\n• Произведена полная дефрагментация базы данных приватов игроков.\n• Оптимизирован обсчёт мобов на нагруженных фермах в Эндер-мире.\n• Модернизировано резервное копирование — теперь бэкапы создаются в облако мгновенно и без малейших зависаний сервера.\n• Исправлен баг со случайными дисконнектами при использовании лодок у барьеров мира."
+    date: "10 Июня 2026",
+    summary: "Мы улучшили производительность базы данных и настроили автоматическую чистку кэша.",
+    tag: "Техническое ⚙️",
+    type: "optimization"
   }
 ];
 
 export function News() {
-  const [selectedNews, setSelectedNews] = useState<typeof newsItems[0] | null>(null);
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+
+  // Helper renderer to output custom rich content inside the Modal
+  const renderModalContent = (type: string) => {
+    switch (type) {
+      case "global_patch":
+        return (
+          <div className="space-y-8 text-zinc-300">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 p-5 rounded-2xl space-y-3">
+              <h4 className="text-emerald-400 font-bold text-base flex items-center gap-2">
+                <Sparkles className="w-5 h-5" />
+                <span>Краткое описание обновления</span>
+              </h4>
+              <p className="text-sm leading-relaxed text-zinc-200">
+                Мы завершили крупное техническое обновление и полную переработку серверного ядра. Проект перешел на высокопроизводительную платформу <strong>Purpur (версия 1.21.1)</strong>, став стабильнее, быстрее и получив множество новых геймплейных возможностей.
+              </p>
+            </div>
+
+            {/* Quick Rules Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
+                <div className="text-xs text-zinc-500 font-mono uppercase">Сохранение инвентаря</div>
+                <div className="text-sm font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>Активно во всех 3 мирах одновременно!</span>
+                </div>
+              </div>
+              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
+                <div className="text-xs text-zinc-500 font-mono uppercase">Режим авторизации (AuthMe)</div>
+                <div className="text-sm font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>Сессия 60 минут без повторного ввода пароля!</span>
+                </div>
+              </div>
+              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
+                <div className="text-xs text-zinc-500 font-mono uppercase">Активность монстров</div>
+                <div className="text-sm font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Криперы и другие мобы полностью активны</span>
+                </div>
+              </div>
+              <div className="bg-zinc-950 p-4 rounded-xl border border-white/5 space-y-1">
+                <div className="text-xs text-zinc-500 font-mono uppercase">AFK Тайм-аут кулдаун</div>
+                <div className="text-sm font-semibold text-amber-400/80 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                  <span>Увеличен до 30 минут (настраивается)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Gameplay Section */}
+            <div className="space-y-4">
+              <h4 className="text-white font-display font-bold text-lg flex items-center gap-2 border-b border-white/10 pb-2">
+                <Zap className="w-5 h-5 text-emerald-400" />
+                <span>Новые возможности геймплея</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Система достижений</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Ваш прогресс теперь более заметен и интересен благодаря плагину <strong>AdvancedAchievements</strong>.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Умная рубка деревьев</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Плагин <strong>UTimber</strong> позволяет срубать дерево целиком в один клик.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Динамическое освещение</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Предметы и факелы в вашей руке теперь освещают пространство вокруг в реальном времени.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Сортировка сундуков</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Организация вашего инвентаря и сундуков в один клик с помощью <strong>ChestSort</strong>.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Визуализация взаимодействий</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Действия игроков (верстаки, наковальни, сундуки) стали видимыми с <strong>InteractionVisualizer</strong>.</p>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-semibold text-zinc-100 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Красивый список игроков</span>
+                  </div>
+                  <p className="text-xs text-zinc-400">Обновлен интерфейс TAB-меню с расширенными показателями онлайна и пинга.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tech improvements */}
+            <div className="space-y-4">
+              <h4 className="text-white font-display font-bold text-lg flex items-center gap-2 border-b border-white/10 pb-2">
+                <Cpu className="w-5 h-5 text-cyan-400" />
+                <span>Технические улучшения и ядра</span>
+              </h4>
+              <ul className="space-y-2 text-sm text-zinc-400 list-disc list-inside">
+                <li>Обновление до стабильного и быстрого ядра <strong className="text-zinc-200">Purpur 1.21.1</strong>.</li>
+                <li>Предгенерация игрового мира с помощью <strong className="text-zinc-200">Chunky</strong> — бег и полеты теперь не вызывают серверных фризов.</li>
+                <li>Оптимизатор жителей <strong className="text-zinc-200">VillagerOptimizer</strong> — снижает лаги от сложных ИИ ферм жителей.</li>
+                <li>Полностью обновлен Античит — сведены к минимуму ложные кики за обычные полеты и лаги соединения.</li>
+              </ul>
+            </div>
+
+            {/* Stability & Security */}
+            <div className="space-y-4">
+              <h4 className="text-white font-display font-bold text-lg flex items-center gap-2 border-b border-white/10 pb-2">
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                <span>Безопасность и стабильность</span>
+              </h4>
+              <p className="text-sm">
+                Мы бережно сохранили и модернизировали наши основные системы безопасности: авторизация <strong>AuthMe</strong>, защита регионов и приватов <strong>WorldGuard</strong>, логгирование изменений блоков <strong>CoreProtect</strong> (для быстрого отката грифа) и кроссплатформенный коннектор <strong>Geyser + Floodgate</strong> для Bedrock игроков.
+              </p>
+            </div>
+          </div>
+        );
+
+      case "fishing":
+        return (
+          <div className="space-y-6 text-zinc-300">
+            <div className="bg-cyan-500/10 border border-cyan-500/20 p-5 rounded-2xl">
+              <p className="text-sm leading-relaxed text-zinc-200">
+                Мы рады представить полноценную интеграцию плагина <strong>EvenMoreFish (версии 2.3.5)</strong>! Обычное сидение с удочкой теперь превратилось в глубокое, соревновательное и прибыльное ремесло.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-white font-semibold text-base">Ключевые особенности новой рыбалки:</h4>
+              <div className="space-y-3">
+                <div className="flex gap-3">
+                  <div className="bg-zinc-950 p-2 rounded-lg border border-white/5 shrink-0 self-start">
+                    <Target className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-sm text-zinc-100">Десятки новых видов рыб</h5>
+                    <p className="text-xs text-zinc-400">Уникальные пресноводные, глубоководные и мифические морские существа со своими весовыми категориями.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="bg-zinc-950 p-2 rounded-lg border border-white/5 shrink-0 self-start">
+                    <Target className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-sm text-zinc-100">Автоматические турниры</h5>
+                    <p className="text-xs text-zinc-400">Каждые несколько часов на сервере стартуют соревнования на самую длинную, самую тяжелую или самую редкую рыбу.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="bg-zinc-950 p-2 rounded-lg border border-white/5 shrink-0 self-start">
+                    <Target className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-sm text-zinc-100">Рыночный обмен у купцов</h5>
+                    <p className="text-xs text-zinc-400">Сдавайте улов особому торговцу рыбой в обмен на ценные игровые ресурсы или декоративные награды.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "optimization":
+        return (
+          <div className="space-y-6 text-zinc-300">
+            <p className="text-sm leading-relaxed">
+              Мы завершили масштабное плановое обслуживание баз данных и оптимизировали алгоритм синхронизации чанков.
+            </p>
+            <ul className="space-y-2 text-sm text-zinc-400 list-disc list-inside">
+              <li>Очищены устаревшие лог-файлы чанков энда.</li>
+              <li>Проведена дефрагментация основной базы данных плагина приватов.</li>
+              <li>Настроен автоматический крон-скрипт для перезагрузки неактивных плагинов контроля.</li>
+              <li>Скорость отклика сервера в пиковые часы увеличилась на 20%.</li>
+            </ul>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
     <section id="news" className="py-32 relative">
@@ -79,7 +300,7 @@ export function News() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 to-transparent" />
-                    <div className="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 text-xs font-medium px-3 py-1 rounded-full backdrop-blur-md border border-emerald-500/30">
+                    <div className="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-md border border-emerald-500/30">
                       {item.tag}
                     </div>
                   </div>
@@ -133,7 +354,7 @@ export function News() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedNews(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="absolute inset-0 bg-black/90 backdrop-blur-md"
             />
 
             {/* Modal Body */}
@@ -147,12 +368,12 @@ export function News() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedNews(null)}
-                className="absolute top-4 right-4 bg-black/40 hover:bg-black/80 text-white/70 hover:text-white p-2.5 rounded-full border border-white/10 transition-all z-20 animate-none"
+                className="absolute top-4 right-4 bg-black/40 hover:bg-black/80 text-white/70 hover:text-white p-2.5 rounded-full border border-white/10 transition-all z-20"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="p-6 md:p-10 max-h-[85vh] overflow-y-auto space-y-6">
+              <div className="p-6 md:p-10 max-h-[85vh] overflow-y-auto space-y-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950">
                 <div className="flex items-center space-x-3">
                   <span className="bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-emerald-500/20 uppercase tracking-wider">
                     {selectedNews.tag}
@@ -169,11 +390,10 @@ export function News() {
 
                 <div className="w-full h-[1px] bg-white/10 my-4" />
 
-                <div className="text-zinc-300 font-sans text-sm md:text-base leading-relaxed whitespace-pre-line space-y-4">
-                  {selectedNews.content}
-                </div>
+                {/* Render styled custom content depending on patch type */}
+                {renderModalContent(selectedNews.type)}
 
-                <div className="pt-8 flex justify-end">
+                <div className="pt-8 flex justify-end border-t border-white/5">
                   <button
                     onClick={() => setSelectedNews(null)}
                     className="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-xl font-medium text-sm transition-colors border border-white/5"
